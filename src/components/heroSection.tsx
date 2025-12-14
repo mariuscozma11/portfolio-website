@@ -11,7 +11,7 @@ const HeroSection = () => {
           <div className="flex flex-row gap-6 items-center">
               <img
                 className="h-30 w-30 rounded-full border-2 border-accent-foreground"
-                src="src/public/marius.jpeg"
+                src="https://rhg08ejxm8a9ebf4.public.blob.vercel-storage.com/file.jpeg"
               ></img>
             <div className="flex flex-col justify-center gap-2">
               <h1 className="text-4xl lg:text-6xl">Hi, I'm <span className="text-primary">Marius</span>!</h1>
