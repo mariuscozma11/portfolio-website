@@ -51,8 +51,8 @@ export const BackgroundRippleEffect = ({
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-3 w-full lg:w-auto flex items-center justify-center px-2">
           {children}
         </div>
-        <Button className=" absolute bottom-6 right-6 flex flex-row items-center justify-center gap-2 p-2 rounded-full z-20">
-          <h4 className="font-medium">Download my resume</h4>
+        <Button variant={'outline'} className="cursor-pointer absolute bottom-6 right-6 flex flex-row items-center justify-center gap-2 rounded-full z-20">
+          <h4>Download my resume</h4>
           <Download />
         </Button>
       </div>
