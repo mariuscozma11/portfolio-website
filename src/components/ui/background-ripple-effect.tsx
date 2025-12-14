@@ -1,17 +1,19 @@
 "use client";
 import React, { useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { Download } from "lucide-react";
+import { Button } from "./button";
 
 export const BackgroundRippleEffect = ({
   rows = 8,
   cols = 27,
   cellSize = 56,
-  children
+  children,
 }: {
   rows?: number;
   cols?: number;
   cellSize?: number;
-  children: any
+  children: any;
 }) => {
   const [clickedCell, setClickedCell] = useState<{
     row: number;
@@ -26,7 +28,7 @@ export const BackgroundRippleEffect = ({
       className={cn(
         "absolute inset-0 h-full w-full mt-16 ",
         "[--cell-border-color:var(--color-neutral-300)] [--cell-fill-color:var(--color-neutral-100)] [--cell-shadow-color:var(--color-neutral-500)]",
-        "dark:[--cell-border-color:var(--color-neutral-700)] dark:[--cell-fill-color:var(--color-neutral-900)] dark:[--cell-shadow-color:var(--color-neutral-800)]",
+        "dark:[--cell-border-color:var(--color-neutral-700)] dark:[--cell-fill-color:var(--color-neutral-900)] dark:[--cell-shadow-color:var(--color-neutral-800)]"
       )}
     >
       <div className="relative h-auto w-auto overflow-hidden border-b border-dashed">
@@ -46,9 +48,13 @@ export const BackgroundRippleEffect = ({
           }}
           interactive
         />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-3">
-        {children}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-3 w-full lg:w-auto flex items-center justify-center px-2">
+          {children}
         </div>
+        <Button className=" absolute bottom-6 right-6 flex flex-row items-center justify-center gap-2 p-2 rounded-full z-20">
+          <h4 className="font-medium">Download my resume</h4>
+          <Download />
+        </Button>
       </div>
     </div>
   );
@@ -84,7 +90,7 @@ const DivGrid = ({
 }: DivGridProps) => {
   const cells = useMemo(
     () => Array.from({ length: rows * cols }, (_, idx) => idx),
-    [rows, cols],
+    [rows, cols]
   );
 
   const gridStyle: React.CSSProperties = {
@@ -120,7 +126,7 @@ const DivGrid = ({
             className={cn(
               "cell relative border-[0.5px] opacity-40 transition-opacity duration-150 will-change-transform hover:opacity-80 dark:shadow-[0px_0px_40px_1px_var(--cell-shadow-color)_inset]",
               clickedCell && "animate-cell-ripple [animation-fill-mode:none]",
-              !interactive && "pointer-events-none",
+              !interactive && "pointer-events-none"
             )}
             style={{
               backgroundColor: fillColor,

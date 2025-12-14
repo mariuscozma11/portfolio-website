@@ -8,17 +8,15 @@ const HeroSection = () => {
     <SectionWrapper>
       <div className="h-screen relative ">
         <BackgroundRippleEffect>
-          <div className="flex flex-row gap-4 items-center">
-            <div className=" h-30 w-30 rounded-full border-4 border-accent-foreground">
+          <div className="flex flex-row gap-6 items-center">
               <img
-                className="rounded-full object-fit"
+                className="h-30 w-30 rounded-full border-2 border-accent-foreground"
                 src="src/public/marius.jpeg"
               ></img>
-            </div>
             <div className="flex flex-col justify-center gap-2">
-              <h1 className="text-6xl">Hi, I'm Marius!</h1>
-              <p className="text-secondary-foreground text-xl">
-                a Full-Stack / Backend developer
+              <h1 className="text-4xl lg:text-6xl">Hi, I'm <span className="text-primary">Marius</span>!</h1>
+              <p className="text-secondary-foreground text-lg lg:text-xl">
+                full-stack / backend engineer
               </p>
               <ul className="flex flex-row items-center gap-2">
                 <a
@@ -45,6 +43,7 @@ const HeroSection = () => {
               </ul>
             </div>
           </div>
+          
         </BackgroundRippleEffect>
       </div>
     </SectionWrapper>
