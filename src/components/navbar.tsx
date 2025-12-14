@@ -28,12 +28,12 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className="fixed top-0 left-0 right-0 border-b border-dashed w-full">
+    <div className="fixed top-0 left-0 right-0 z-10 border-b border-dashed w-full">
       <div
-        className={`max-w-7xl mx-auto transition-all duration-500 ease-in-out px-4 border-x border-dashed
+        className={`max-w-7xl mx-auto transition-all duration-500 ease-out px-4 border-x border-dashed
         ${
           isScrolled
-            ? "py-2 backdrop-blur-sm  shadow-md"
+            ? "py-2 backdrop-blur-sm shadow-md"
             : "py-4 shadow-none"
         }`}
       >
