@@ -32,7 +32,7 @@ export const BackgroundRippleEffect = ({
       )}
     >
       <div className="relative h-auto w-auto overflow-hidden border-b border-dashed">
-        <div className="pointer-events-none absolute inset-0 z-[2] h-full w-full overflow-hidden" />
+        <div className="pointer-events-none absolute inset-0 z-2 h-full w-full overflow-hidden" />
         <DivGrid
           key={`base-${rippleKey}`}
           className="mask-radial-from-20% mask-radial-at-top opacity-600"
@@ -51,10 +51,15 @@ export const BackgroundRippleEffect = ({
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-3 w-full lg:w-auto flex items-center justify-center px-2">
           {children}
         </div>
-        <Button variant={'outline'} className="cursor-pointer absolute bottom-6 right-6 flex flex-row items-center justify-center gap-2 rounded-full z-20">
-          <h4>Download my resume</h4>
-          <Download />
-        </Button>
+        <a href="src/assets/Marius-Cozma_FullStack-Developer.pdf" target="_blank" rel="noopener noreferrer">
+          <Button
+            variant={"outline"}
+            className="cursor-pointer absolute bottom-6 right-6 flex flex-row items-center justify-center gap-2 rounded-full z-20"
+          >
+            <h4>Download my resume</h4>
+            <Download />
+          </Button>
+        </a>
       </div>
     </div>
   );
@@ -103,7 +108,7 @@ const DivGrid = ({
   };
 
   return (
-    <div className={cn("relative z-[3]", className)} style={gridStyle}>
+    <div className={cn("relative z-3", className)} style={gridStyle}>
       {cells.map((idx) => {
         const rowIdx = Math.floor(idx / cols);
         const colIdx = idx % cols;
@@ -125,7 +130,7 @@ const DivGrid = ({
             key={idx}
             className={cn(
               "cell relative border-[0.5px] opacity-40 transition-opacity duration-150 will-change-transform hover:opacity-80 dark:shadow-[0px_0px_40px_1px_var(--cell-shadow-color)_inset]",
-              clickedCell && "animate-cell-ripple [animation-fill-mode:none]",
+              clickedCell && "animate-cell-ripple fill-mode-[none]",
               !interactive && "pointer-events-none"
             )}
             style={{
