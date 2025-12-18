@@ -3,6 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
 :root {
   --background: oklch(0.98 0 0);
   --foreground: oklch(0.28 0.04 260.33);
@@ -156,7 +157,6 @@
   --shadow-2xl: var(--shadow-2xl);
 }
 
-
 @theme inline {
   --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1
   var(--delay, 0ms);
@@ -173,7 +173,6 @@
     }
   }
 }
-
 
 @layer base {
   * {

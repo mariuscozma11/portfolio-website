@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
+import { ModeToggle } from "./mode-toggle";
+import { MobileMenu } from "./mobile-menu";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,27 +32,28 @@ const Navbar = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-10 border-b border-dashed w-full">
       <div
-        className={`max-w-7xl mx-auto transition-all duration-500 ease-out px-4 border-x border-dashed
+        className={`max-w-7xl h-16 mx-auto transition-all duration-500 ease-out px-4 border-x border-dashed
         ${
           isScrolled
-            ? "py-2 backdrop-blur-sm shadow-md"
+            ? "py-2 h-auto backdrop-blur-sm shadow-md"
             : "py-4 shadow-none"
         }`}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mx-auto">
           {/* Logo - Left */}
           <a href={`#`} className="flex items-center space-x-2 cursor-pointer">
             <div className="text-xl  tracking-tight">Marius Cozma</div>
           </a>
           {/* Desktop Navigation - Right */}
           <div className="hidden lg:flex items-center space-x-4">
+            <ModeToggle />
             {navigationItems.map((item) => (
               <div key={item.label}>
                 <a href={item.href}>
                   <Button
-                    variant='ghost'
+                    variant="ghost"
                     className="px-3 text-[15px]"
-                    size={'sm'}
+                    size={"sm"}
                   >
                     {item.label}
                   </Button>
@@ -58,7 +61,12 @@ const Navbar = () => {
               </div>
             ))}
           </div>
-
+          <div className="flex lg:hidden">
+            <MobileMenu  />
+          </div>
+          {/* <Button variant={"outline"} size={"icon"} className="flex lg:hidden">
+              <Menu />
+            </Button> */}
         </div>
       </div>
     </div>
