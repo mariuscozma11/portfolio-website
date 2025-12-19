@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/sheet";
 
 import { Menu } from "lucide-react";
-import { useEffect } from "react";
 
 const navigationItems = [
   {
