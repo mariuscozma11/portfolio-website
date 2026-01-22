@@ -31,7 +31,7 @@ export const BackgroundRippleEffect = ({
         "dark:[--cell-border-color:var(--color-neutral-700)] dark:[--cell-fill-color:var(--color-neutral-900)] dark:[--cell-shadow-color:var(--color-neutral-800)]"
       )}
     >
-      <div className="relative h-auto w-auto overflow-hidden border-b border-dashed">
+      <div className="relative h-auto w-auto overflow-hidden">
         <div className="pointer-events-none absolute inset-0 z-2 h-full w-full overflow-hidden" />
         <DivGrid
           key={`base-${rippleKey}`}
@@ -56,7 +56,7 @@ export const BackgroundRippleEffect = ({
             variant={"outline"}
             className="cursor-pointer absolute bottom-6 right-6 flex flex-row items-center justify-center gap-2 rounded-full z-20"
           >
-            <h4>Download my resume</h4>
+            <h4 className="font-mono">Download my resume</h4>
             <Download />
           </Button>
         </a>

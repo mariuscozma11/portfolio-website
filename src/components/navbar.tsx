@@ -8,7 +8,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 1);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -21,7 +21,7 @@ const Navbar = () => {
       href: `#`,
     },
     {
-      label: "Projects",
+      label: "Blog",
       href: `#`,
     },
     {
@@ -42,7 +42,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between mx-auto">
           {/* Logo - Left */}
           <a href={`#`} className="flex items-center space-x-2 cursor-pointer">
-            <div className="text-xl  tracking-tight">Marius Cozma</div>
+            <div className="text-xl  tracking-tight font-mono">
+              Marius Cozma
+            </div>
           </a>
           {/* Desktop Navigation - Right */}
           <div className="hidden lg:flex items-center space-x-4">
@@ -52,7 +54,7 @@ const Navbar = () => {
                 <a href={item.href}>
                   <Button
                     variant="ghost"
-                    className="px-3 text-[15px]"
+                    className="px-3 text-[15px] "
                     size={"sm"}
                   >
                     {item.label}
@@ -62,7 +64,7 @@ const Navbar = () => {
             ))}
           </div>
           <div className="flex lg:hidden">
-            <MobileMenu  />
+            <MobileMenu />
           </div>
           {/* <Button variant={"outline"} size={"icon"} className="flex lg:hidden">
               <Menu />

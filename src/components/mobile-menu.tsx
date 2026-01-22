@@ -14,7 +14,7 @@ const navigationItems = [
     href: `#`,
   },
   {
-    label: "Projects",
+    label: "Blog",
     href: `#`,
   },
   {
@@ -23,7 +23,6 @@ const navigationItems = [
   },
 ];
 export function MobileMenu() {
-
   return (
     <Sheet>
       <SheetTrigger asChild>
