@@ -1,11 +1,12 @@
 import { Mail, MapPin, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 import SectionWrapper from "./section-wrapper";
 
 const Footer = () => {
   const navigationItems = [
-    { label: "Home", href: "#" },
+    { label: "Home", href: "/" },
     { label: "Blog", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -51,12 +52,21 @@ const Footer = () => {
             <ul className="space-y-3">
               {navigationItems.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="text-muted-foreground hover:text-primary transition-colors font-mono text-sm"
-                  >
-                    {item.label}
-                  </a>
+                  {item.href.startsWith("/") ? (
+                    <Link
+                      to={item.href}
+                      className="text-muted-foreground hover:text-primary transition-colors font-mono text-sm"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className="text-muted-foreground hover:text-primary transition-colors font-mono text-sm"
+                    >
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

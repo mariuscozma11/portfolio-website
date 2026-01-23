@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
 import { MobileMenu } from "./mobile-menu";
@@ -18,15 +19,15 @@ const Navbar = () => {
   const navigationItems = [
     {
       label: "Home",
-      href: `#`,
+      href: "/",
     },
     {
       label: "Blog",
-      href: `#`,
+      href: "#",
     },
     {
       label: "Contact",
-      href: `#`,
+      href: "/contact",
     },
   ];
   return (
@@ -41,25 +42,37 @@ const Navbar = () => {
       >
         <div className="flex items-center justify-between mx-auto">
           {/* Logo - Left */}
-          <a href={`#`} className="flex items-center space-x-2 cursor-pointer">
+          <Link to="/" className="flex items-center space-x-2 cursor-pointer">
             <div className="text-xl  tracking-tight font-mono">
               Marius Cozma
             </div>
-          </a>
+          </Link>
           {/* Desktop Navigation - Right */}
           <div className="hidden lg:flex items-center space-x-4">
             <ModeToggle />
             {navigationItems.map((item) => (
               <div key={item.label}>
-                <a href={item.href}>
-                  <Button
-                    variant="ghost"
-                    className="px-3 text-[15px] "
-                    size={"sm"}
-                  >
-                    {item.label}
-                  </Button>
-                </a>
+                {item.href.startsWith("/") ? (
+                  <Link to={item.href}>
+                    <Button
+                      variant="ghost"
+                      className="px-3 text-[15px]"
+                      size="sm"
+                    >
+                      {item.label}
+                    </Button>
+                  </Link>
+                ) : (
+                  <a href={item.href}>
+                    <Button
+                      variant="ghost"
+                      className="px-3 text-[15px]"
+                      size="sm"
+                    >
+                      {item.label}
+                    </Button>
+                  </a>
+                )}
               </div>
             ))}
           </div>
