@@ -51,7 +51,7 @@ export const BackgroundRippleEffect = ({
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-3 w-full lg:w-auto flex items-center justify-center px-2">
           {children}
         </div>
-        <a href="https://rhg08ejxm8a9ebf4.public.blob.vercel-storage.com/Marius-Cozma_FullStack-Developer.pdf" target="_blank" rel="noopener noreferrer">
+        <a href="https://rhg08ejxm8a9ebf4.public.blob.vercel-storage.com/resume.pdf" target="_blank" rel="noopener noreferrer">
           <Button
             variant={"outline"}
             className="cursor-pointer absolute bottom-6 right-6 flex flex-row items-center justify-center gap-2 rounded-full z-20"
