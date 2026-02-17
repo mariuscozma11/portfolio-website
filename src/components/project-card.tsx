@@ -5,9 +5,10 @@ interface ProjectCardProps {
   title: string;
   description: string;
   status: "finished" | "in-dev";
+  tags?: string[];
 }
 
-const ProjectCard = ({ image, title, description, status }: ProjectCardProps) => {
+const ProjectCard = ({ image, title, description, status, tags }: ProjectCardProps) => {
   return (
     <div className="group h-full flex flex-col rounded-lg border border-dashed bg-card overflow-hidden transition-all hover:border-solid hover:border-primary hover:shadow-md">
       <div className="aspect-video overflow-hidden relative">
@@ -33,6 +34,18 @@ const ProjectCard = ({ image, title, description, status }: ProjectCardProps) =>
         <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
           {description}
         </p>
+        {tags && tags.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-2 py-1 text-xs font-mono rounded bg-accent text-accent-foreground border border-border"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

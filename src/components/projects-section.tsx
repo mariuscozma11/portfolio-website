@@ -25,6 +25,7 @@ interface Project {
   fullDescription: string;
   technologies: string[];
   status: "finished" | "in-dev";
+  tags?: string[];
   github?: string;
   live?: string;
 }
@@ -32,46 +33,39 @@ interface Project {
 const mockProjects: Project[] = [
   {
     id: 1,
-    image: "/novaworks.png",
-    title: "NovaWorks Ecommerce",
-    description: "Ecommerce platform for a 3D printing business with custom quotation for user-uploaded 3D parts.",
-    fullDescription: "Ecommerce platform for a 3D printing business. Developed entirely by myself. Features include a full ecommerce website with custom quotation for user-uploaded 3D parts, admin dashboard for products, categories, analytics, and order status, and Romanian/English localization.",
-    technologies: ["Java", "Spring Boot", "PostgreSQL", "Next.js", "TailwindCSS", "TanStack Query", "shadcn"],
-    status: "in-dev",
-    live: "https://novaworks.ro/",
-  },
-  {
-    id: 2,
     image: "/medis.png",
     title: "MEDIS",
-    description: "Medical conference app with ticket sales, workshop allocation, and QR code presence tracking.",
-    fullDescription: "Medical conference app. Collaborated with a freelance associate, handling backend and API. Features include ticket sales with EuPlatesc payment integration, workshop allocation for attendees, and user presence tracking with QR code scanning.",
+    description: "Medical conference app with ticket sales, workshop allocation, and QR code presence tracking. Sold over 300 tickets in less than a minute.",
+    fullDescription: "Medical conference app. Collaborated with a freelance associate, handling backend and API. Features include ticket sales with EuPlatesc payment integration, workshop allocation for attendees, and user presence tracking with QR code scanning. We sold over 300 tickets in less than a minute.",
     technologies: ["Java", "Spring Boot", "PostgreSQL"],
     status: "finished",
+    tags: ["300+ tickets in <1 min"],
     live: "https://medistm.ro",
   },
   {
-    id: 3,
+    id: 2,
     image: "/nuvio.png",
     title: "Nuvio",
-    description: "Scheduling app for barbershops, clinics, and service businesses.",
-    fullDescription: "Scheduling app for barbershops, clinics, and service businesses. Contributed to backend and API using Supabase and edge functions in Node.js. Built for Dot Koda Dev.",
+    description: "Scheduling app for barbershops, clinics, and service businesses. 1k MAU.",
+    fullDescription: "Scheduling app for barbershops, clinics, and service businesses with 1k monthly active users. Contributed to backend and API using Supabase and edge functions in Node.js. Built for Dot Koda Dev.",
     technologies: ["Node.js", "Supabase", "Edge Functions"],
     status: "finished",
+    tags: ["1k MAU"],
     live: "https://nuvio.ro",
   },
   {
-    id: 4,
+    id: 3,
     image: "/exa.jpeg",
     title: "Exa Gym",
-    description: "Gym membership app for the Gym One franchise.",
-    fullDescription: "Gym membership app for Gym One franchise. Contributed to backend and API using Java, Spring Boot, PostgreSQL. Built for Dot Koda Dev.",
+    description: "Gym membership app for the Gym One franchise. 10k MAU.",
+    fullDescription: "Gym membership app for Gym One franchise with 10k monthly active users. Contributed to backend and API using Java, Spring Boot, PostgreSQL. Built for Dot Koda Dev.",
     technologies: ["Java", "Spring Boot", "PostgreSQL"],
     status: "finished",
+    tags: ["10k MAU"],
     live: "https://exahealth.ro/",
   },
   {
-    id: 5,
+    id: 4,
     image: "/lagrange.png",
     title: "Lagrange Engineering",
     description: "Corporate website for my freelance web development company.",
@@ -79,6 +73,16 @@ const mockProjects: Project[] = [
     technologies: ["Next.js", "React", "TailwindCSS"],
     status: "finished",
     live: "https://www.lagrangeengineering.ro/ro",
+  },
+  {
+    id: 5,
+    image: "/novaworks.png",
+    title: "NovaWorks Ecommerce",
+    description: "Ecommerce platform for a 3D printing business with custom quotation for user-uploaded 3D parts.",
+    fullDescription: "Ecommerce platform for a 3D printing business. Developed entirely by myself. Features include a full ecommerce website with custom quotation for user-uploaded 3D parts, admin dashboard for products, categories, analytics, and order status, and Romanian/English localization.",
+    technologies: ["Java", "Spring Boot", "PostgreSQL", "Next.js", "TailwindCSS", "TanStack Query", "shadcn"],
+    status: "in-dev",
+    live: "https://novaworks.ro/",
   },
   {
     id: 6,
@@ -179,6 +183,7 @@ const ProjectsSection = () => {
                     title={project.title}
                     description={project.description}
                     status={project.status}
+                    tags={project.tags}
                   />
                 </div>
               </CarouselItem>
