@@ -21,17 +21,17 @@ const Navbar = () => {
       label: "Home",
       href: "/",
     },
-    {
-      label: "Blog",
-      href: "#",
-    },
+    // {
+    //   label: "Blog",
+    //   href: "#",
+    // },
     {
       label: "Contact",
       href: "/contact",
     },
   ];
   return (
-    <div className="fixed z-10 border-b border-dashed w-full">
+    <div className="fixed z-10 border-b border-dashed w-full bg-background">
       <div
         className={`max-w-7xl h-16 mx-auto transition-all duration-500 ease-out px-4 border-x border-dashed
         ${

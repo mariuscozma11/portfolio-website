@@ -13,10 +13,10 @@ const navigationItems = [
     label: "Home",
     href: `#`,
   },
-  {
-    label: "Blog",
-    href: `#`,
-  },
+  // {
+  //   label: "Blog",
+  //   href: `#`,
+  // },
   {
     label: "Contact",
     href: `#`,

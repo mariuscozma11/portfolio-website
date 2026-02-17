@@ -14,6 +14,7 @@ import {
 } from "./ui/dialog";
 import ProjectCard from "./project-card";
 import SectionWrapper from "./section-wrapper";
+import FullscreenImage from "./ui/fullscreen-image";
 import { useState } from "react";
 
 interface Project {
@@ -23,6 +24,7 @@ interface Project {
   description: string;
   fullDescription: string;
   technologies: string[];
+  status: "finished" | "in-dev";
   github?: string;
   live?: string;
 }
@@ -30,58 +32,111 @@ interface Project {
 const mockProjects: Project[] = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=225&fit=crop",
-    title: "API Gateway Service",
-    description: "A high-performance API gateway built with Go, handling millions of requests daily with rate limiting and caching.",
-    fullDescription: "A high-performance API gateway built with Go that handles millions of requests daily. Features include intelligent rate limiting, response caching, request/response transformation, and comprehensive logging. Built with a focus on minimal latency and maximum throughput.",
-    technologies: ["Go", "Redis", "PostgreSQL", "Docker", "Kubernetes"],
-    github: "https://github.com",
+    image: "/novaworks.png",
+    title: "NovaWorks Ecommerce",
+    description: "Ecommerce platform for a 3D printing business with custom quotation for user-uploaded 3D parts.",
+    fullDescription: "Ecommerce platform for a 3D printing business. Developed entirely by myself. Features include a full ecommerce website with custom quotation for user-uploaded 3D parts, admin dashboard for products, categories, analytics, and order status, and Romanian/English localization.",
+    technologies: ["Java", "Spring Boot", "PostgreSQL", "Next.js", "TailwindCSS", "TanStack Query", "shadcn"],
+    status: "in-dev",
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=225&fit=crop",
-    title: "Event Streaming Platform",
-    description: "Real-time event streaming solution using Kafka and microservices architecture for distributed systems.",
-    fullDescription: "A real-time event streaming platform designed for distributed systems. Processes millions of events per second with guaranteed delivery and exactly-once semantics. Includes a custom consumer framework and dead-letter queue handling.",
-    technologies: ["Go", "Apache Kafka", "gRPC", "Protobuf", "Docker"],
-    github: "https://github.com",
+    image: "/medis.png",
+    title: "MEDIS",
+    description: "Medical conference app with ticket sales, workshop allocation, and QR code presence tracking.",
+    fullDescription: "Medical conference app. Collaborated with a freelance associate, handling backend and API. Features include ticket sales with EuPlatesc payment integration, workshop allocation for attendees, and user presence tracking with QR code scanning.",
+    technologies: ["Java", "Spring Boot", "PostgreSQL"],
+    status: "finished",
+    live: "https://medistm.ro",
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=225&fit=crop",
-    title: "Cloud Infrastructure CLI",
-    description: "Command-line tool for managing multi-cloud infrastructure with Terraform and custom provisioning logic.",
-    fullDescription: "A powerful CLI tool for managing infrastructure across AWS, Azure, and GCP. Wraps Terraform with custom provisioning logic, state management, and drift detection. Simplifies complex multi-cloud deployments into simple commands.",
-    technologies: ["Go", "Terraform", "AWS SDK", "Azure SDK", "GCP SDK"],
-    github: "https://github.com",
+    image: "/nuvio.png",
+    title: "Nuvio",
+    description: "Scheduling app for barbershops, clinics, and service businesses.",
+    fullDescription: "Scheduling app for barbershops, clinics, and service businesses. Contributed to backend and API using Supabase and edge functions in Node.js. Built for Dot Koda Dev.",
+    technologies: ["Node.js", "Supabase", "Edge Functions"],
+    status: "finished",
+    live: "https://nuvio.ro",
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=225&fit=crop",
-    title: "Data Pipeline Engine",
-    description: "ETL pipeline framework for processing large datasets with parallel execution and fault tolerance.",
-    fullDescription: "An ETL pipeline framework designed for processing terabytes of data daily. Features parallel execution, automatic retry logic, checkpoint recovery, and pluggable transformers. Integrates with various data sources and sinks.",
-    technologies: ["Go", "PostgreSQL", "ClickHouse", "S3", "Docker"],
-    github: "https://github.com",
+    image: "/exa.jpeg",
+    title: "Exa Gym",
+    description: "Gym membership app for the Gym One franchise.",
+    fullDescription: "Gym membership app for Gym One franchise. Contributed to backend and API using Java, Spring Boot, PostgreSQL. Built for Dot Koda Dev.",
+    technologies: ["Java", "Spring Boot", "PostgreSQL"],
+    status: "finished",
   },
   {
     id: 5,
-    image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&h=225&fit=crop",
-    title: "Auth Service",
-    description: "Secure authentication microservice with OAuth2, JWT tokens, and multi-factor authentication support.",
-    fullDescription: "A production-ready authentication microservice supporting OAuth2, OIDC, JWT tokens, and MFA. Includes session management, password policies, brute-force protection, and audit logging. Designed for easy integration with any application.",
-    technologies: ["Go", "PostgreSQL", "Redis", "JWT", "TOTP"],
-    github: "https://github.com",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=225&fit=crop",
+    title: "Lagrange Engineering",
+    description: "Corporate website for my freelance web development company.",
+    fullDescription: "The official website for Lagrange Engineering, my freelance web development company. Features a modern design showcasing services, portfolio, and contact information for potential clients.",
+    technologies: ["Next.js", "React", "TailwindCSS"],
+    status: "finished",
+    live: "https://lagrangeengineering.ro",
   },
   {
     id: 6,
-    image: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=400&h=225&fit=crop",
-    title: "Monitoring Dashboard",
-    description: "Real-time system monitoring dashboard with custom metrics, alerts, and performance analytics.",
-    fullDescription: "A real-time monitoring dashboard for tracking system health, custom metrics, and performance analytics. Features customizable dashboards, alerting rules, anomaly detection, and historical data analysis. Built with a React frontend and Go backend.",
-    technologies: ["Go", "React", "InfluxDB", "Grafana", "WebSocket"],
-    github: "https://github.com",
-    live: "https://example.com",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=225&fit=crop",
+    title: "Corox Engineering",
+    description: "Corporate website for an industrial automation and machine safety company.",
+    fullDescription: "Complete corporate website for Corox Engineering, a company specializing in industrial automation, Machine Safety, risk assessments, and integrated technical systems. Features responsive design, contact forms, service showcase, and professional branding. The website serves clients across Romania with European-quality professional services.",
+    technologies: ["Next.js", "React", "TailwindCSS", "SSG"],
+    status: "finished",
+    live: "https://coroxengineering.ro",
+  },
+  {
+    id: 7,
+    image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=225&fit=crop",
+    title: "D-KAT Tour",
+    description: "Showcase website for exclusive supercar and exotic vehicle experiences.",
+    fullDescription: "Elegant showcase website for D-KAT Tour, a company organizing exclusive automotive experiences with supercars and exotic vehicles. The platform showcases the available vehicle fleet, including Porsche 911 Turbo S, Lamborghini Huracán, Ferrari SF90, and Rolls-Royce Dawn. Features include photo gallery, partnership system, registration page, and contact section. The design reflects the brand's premium positioning, targeting automotive enthusiasts and clients interested in luxury experiences.",
+    technologies: ["Next.js", "TypeScript", "TailwindCSS", "React"],
+    status: "finished",
+    live: "https://dkattour.ro",
+  },
+  {
+    id: 8,
+    image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=225&fit=crop",
+    title: "Hazzard Studio",
+    description: "Professional website for a modern barbershop in Timișoara.",
+    fullDescription: "Professional website for Hazzard Studio, a modern barbershop in Timișoara. The platform includes service presentation for haircuts, beard and mustache grooming, photo gallery of completed work, barber profiles, operating hours, and mobile app integration for bookings. The modern and clean design reflects the brand identity, with a focus on user experience and new client conversion.",
+    technologies: ["Next.js", "TypeScript", "TailwindCSS", "React"],
+    status: "finished",
+    live: "https://hazzardstudio.ro",
+  },
+  {
+    id: 9,
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=225&fit=crop",
+    title: "Cum Comunic",
+    description: "Relational counseling website for the ESPERE Method.",
+    fullDescription: "Professional website for Liliana Enculescu, a relational counselor and accredited trainer in the ESPERE Method, with over 20 years of experience and 13,000+ clients. The platform presents counseling services for couple relationships, parent-child dynamics, workplace relationships, educator-student relations, healthcare professional-patient communication, and self-relationship. Includes sections for testimonials, FAQ, consultation booking, and detailed presentation of the ESPERE methodology.",
+    technologies: ["Next.js", "TypeScript", "TailwindCSS", "React", "SEO"],
+    status: "finished",
+    live: "https://cumcomunic.ro",
+  },
+  {
+    id: 10,
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=225&fit=crop",
+    title: "Cliniva",
+    description: "Medical center website for recovery and wellness services.",
+    fullDescription: "Complete website for Cliniva, a modern medical recovery and wellness center in Timișoara, with a tradition dating back to 1993. The platform showcases the full range of medical services: orthopedics, physical therapy (TECAR therapy, laser, ultrasound, magnetotherapy), kinesiotherapy, chiropractic, therapeutic massage, internal medicine, and psychology. Includes medical team profiles, patient testimonials, online booking system, and CNAS insurance coverage information.",
+    technologies: ["Next.js", "TypeScript", "TailwindCSS", "React", "SEO"],
+    status: "finished",
+    live: "https://cliniva.ro",
+  },
+  {
+    id: 11,
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=225&fit=crop",
+    title: "Mechafusion UPT",
+    description: "Official website for the robotics club of Politehnica University Timișoara.",
+    fullDescription: "Modern and engaging website for Mechafusion, the official robotics club of Universitatea Politehnica Timișoara. Features include project showcases, member profiles, event announcements, competition results, and recruitment information. Built with a focus on showcasing innovative robotics projects and fostering community engagement among engineering students.",
+    technologies: ["HTML", "JavaScript", "TailwindCSS", "AWS S3", "Cloudflare"],
+    status: "finished",
+    live: "https://mechafusion.ro",
   },
 ];
 
@@ -90,8 +145,8 @@ const ProjectsSection = () => {
 
   return (
     <SectionWrapper>
-      <div className="pt-4 pb-16 px-4 md:px-16">
-        <div className="mb-8">
+      <div className="py-12 px-4 md:px-16">
+        <div className="mb-12">
           <h2 className="text-3xl lg:text-4xl font-mono text-foreground">
             Projects
           </h2>
@@ -121,6 +176,7 @@ const ProjectsSection = () => {
                     image={project.image}
                     title={project.title}
                     description={project.description}
+                    status={project.status}
                   />
                 </div>
               </CarouselItem>
@@ -139,15 +195,26 @@ const ProjectsSection = () => {
           <DialogContent className="max-w-2xl">
             {selectedProject && (
               <>
-                <img
+                <FullscreenImage
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="w-full aspect-video object-cover rounded-lg"
+                  className="w-full aspect-video rounded-lg overflow-hidden"
                 />
                 <DialogHeader>
-                  <DialogTitle className="font-mono text-xl">
-                    {selectedProject.title}
-                  </DialogTitle>
+                  <div className="flex items-center gap-3">
+                    <DialogTitle className="font-mono text-xl">
+                      {selectedProject.title}
+                    </DialogTitle>
+                    <span
+                      className={`px-2 py-1 text-xs font-mono rounded ${
+                        selectedProject.status === "finished"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted text-muted-foreground border border-border"
+                      }`}
+                    >
+                      {selectedProject.status === "finished" ? "Finished" : "In Development"}
+                    </span>
+                  </div>
                   <DialogDescription className="font-mono text-sm">
                     {selectedProject.fullDescription}
                   </DialogDescription>
@@ -165,28 +232,18 @@ const ProjectsSection = () => {
                     ))}
                   </div>
                 </div>
-                <div className="flex gap-4">
-                  {selectedProject.github && (
-                    <a
-                      href={selectedProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      GitHub →
-                    </a>
-                  )}
-                  {selectedProject.live && (
+                {selectedProject.live && (
+                  <div className="flex gap-4">
                     <a
                       href={selectedProject.live}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors"
                     >
-                      Live Demo →
+                      Link →
                     </a>
-                  )}
-                </div>
+                  </div>
+                )}
               </>
             )}
           </DialogContent>

@@ -10,16 +10,16 @@ interface WorkExperience {
 
 const workExperiences: WorkExperience[] = [
   {
-    title: "Full-Stack Developer and Founder",
+    title: "Full-Stack Developer",
     period: "Feb 2025 – present",
     company: "Lagrange Engineering SRL",
     description:
-      "Lagrange Engineering is a Romanian company which I have founded. It specializes in custom Web Development (Basically a freelance web company right now) and as a full-stack developer my responsibilities are:",
+      "Lagrange Engineering is a Romanian company which I have founded. It specializes in custom Web Development (Basically a freelance web company) and as a full-stack developer I'm responsible for:",
     responsibilities: [
-      "Designing and building web applications using Golang, Node.js, SQL Databases (Postgres, MySQL, SQLite) and NoSQL (MongoDB primarily) alongside associates according to the client's specifications.",
-      "Designing and building user interfaces using React (Next.js or TanStack Start depending on the application) and API integration, focusing on user experience and client's specifications. Interfaces are built with the help of AI agents like Claude Code or Gemini.",
-      "Creating tests that ensures that the code quality meets the client's standards, while keeping the codebase maintainable.",
-      "Creating CI/CD pipelines with Github Actions, Docker and chosen Cloud Providers (AWS, Azure, Railway, Vercel) ensuring seamless predictable deployments from development to production.",
+      "Design and develop web application servers and APIs using Java, Spring Boot, Node.js, and both SQL and NoSQL databases, collaborating with other freelance associates to deliver solutions aligned with client specifications.",
+      "Design and implement user interfaces using React, integrating APIs with a strong focus on usability and client requirements. Leverage AI-assisted development tools such as Claude Code and Gemini to enhance productivity.",
+      "Develop and maintain automated tests to ensure high code quality, reliability, and long-term maintainability in accordance with client standards.",
+      "Build and maintain CI/CD pipelines using GitHub Actions and Docker, deploying to cloud platforms such as AWS, Azure, Railway, and Vercel to ensure reliable and predictable releases from development through production.",
     ],
   },
   {
@@ -27,7 +27,7 @@ const workExperiences: WorkExperience[] = [
     period: "Jan 2024 – Feb 2025",
     company: "Self-Employed",
     description:
-      "As a freelance web developer I mostly developed simple web pages and a few apps, but more front-end oriented, using serverless solutions like Supabase for SQL and Firebase for NoSQL. When I started out I made vanilla HTML, CSS and Javascript web pages for friends and other people I knew, then I started learning React and other libraries and frameworks that helped me build more complex projects for actual clients.",
+      "Worked as a freelance web developer, primarily building front-end focused websites and web applications for individuals and small businesses. Started by creating responsive websites using HTML, CSS, and JavaScript, and later moved on to building more complex applications with React and related tools. Used serverless backend solutions such as Supabase (SQL) and Firebase (NoSQL) to handle authentication, data storage, and real-time functionality without managing infrastructure. Gradually expanded from static websites to dynamic, client-driven applications, with a focus on usability, performance, and maintainable code.",
     responsibilities: [],
   },
   {
@@ -35,12 +35,12 @@ const workExperiences: WorkExperience[] = [
     period: "Sep 2022 – Feb 2024",
     company: "TPS Industry SRL, Atlantis Project SRL",
     description:
-      "Before my career in Tech, I worked as an Industrial Automation Engineer started when I was 18 years old, following my college major's field (Industrial Engineering). In this time I have worked for two companies: Tropcrim Serv SRL and Atlantis Project SRL, but the position consisted of the same responsibilities:",
+      "Before transitioning into Tech, I worked as an Industrial Automation Engineer after majoring in Industrial Engineering. I held this role at Trocprim Serv SRL and Atlantis Project SRL, where I was responsible for:",
     responsibilities: [
-      "Industrial process automation equipment and devices design and implementation specific to the client's requirements.",
-      "3D design pneumatic and electrical diagrams and technical documentation for the equipment.",
-      "Programming PLCs (programmable logic controllers) and industrial robot integration and programming.",
-      "Physical mounting, CNC machining and electrical wiring of the equipment.",
+      "Designing and implementing industrial process automation equipment tailored to client-specific requirements.",
+      "Creating 3D pneumatic and electrical system designs, including technical documentation and detailed schematics.",
+      "Programming PLCs (Programmable Logic Controllers) and integrating and programming industrial robots.",
+      "Performing physical assembly, CNC machining, and electrical wiring of automation equipment.",
     ],
   },
 ];
@@ -48,8 +48,8 @@ const workExperiences: WorkExperience[] = [
 const WorkExperienceSection = () => {
   return (
     <SectionWrapper>
-      <div className="pt-4 pb-16 px-4">
-        <div className="mb-8">
+      <div className="py-12 px-4">
+        <div className="mb-12">
           <h2 className="text-3xl lg:text-4xl font-mono text-foreground">
             Work Experience
           </h2>

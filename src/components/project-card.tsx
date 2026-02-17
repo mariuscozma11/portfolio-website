@@ -1,18 +1,30 @@
+import ImageWithLoader from "./ui/image-with-loader";
+
 interface ProjectCardProps {
   image: string;
   title: string;
   description: string;
+  status: "finished" | "in-dev";
 }
 
-const ProjectCard = ({ image, title, description }: ProjectCardProps) => {
+const ProjectCard = ({ image, title, description, status }: ProjectCardProps) => {
   return (
     <div className="group h-full flex flex-col rounded-lg border border-dashed bg-card overflow-hidden transition-all hover:border-solid hover:border-primary hover:shadow-md">
-      <div className="aspect-video overflow-hidden">
-        <img
+      <div className="aspect-video overflow-hidden relative">
+        <ImageWithLoader
           src={image}
           alt={title}
           className="h-full w-full object-cover"
         />
+        <span
+          className={`absolute top-2 right-2 px-2 py-1 text-xs font-mono rounded ${
+            status === "finished"
+              ? "bg-primary text-primary-foreground"
+              : "bg-muted text-muted-foreground border border-border"
+          }`}
+        >
+          {status === "finished" ? "Finished" : "In Development"}
+        </span>
       </div>
       <div className="p-4 flex-1 flex flex-col">
         <h3 className="font-mono text-lg font-medium text-foreground line-clamp-1">
