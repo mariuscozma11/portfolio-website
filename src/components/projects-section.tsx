@@ -26,6 +26,7 @@ interface Project {
   technologies: string[];
   status: "finished" | "in-dev";
   tags?: string[];
+  techBadges?: string[];
   github?: string;
   live?: string;
 }
@@ -40,6 +41,7 @@ const mockProjects: Project[] = [
     technologies: ["Java", "Spring Boot", "PostgreSQL"],
     status: "finished",
     tags: ["300+ tickets in <1 min"],
+    techBadges: ["Java", "Spring Boot"],
     live: "https://medistm.ro",
   },
   {
@@ -51,6 +53,7 @@ const mockProjects: Project[] = [
     technologies: ["Node.js", "Supabase", "Edge Functions"],
     status: "finished",
     tags: ["1k MAU"],
+    techBadges: ["Node.js", "Supabase"],
     live: "https://nuvio.ro",
   },
   {
@@ -62,27 +65,30 @@ const mockProjects: Project[] = [
     technologies: ["Java", "Spring Boot", "PostgreSQL"],
     status: "finished",
     tags: ["10k MAU"],
+    techBadges: ["Java", "Spring Boot"],
     live: "https://exahealth.ro/",
   },
   {
     id: 4,
-    image: "/lagrange.png",
-    title: "Lagrange Engineering",
-    description: "Corporate website for my freelance web development company.",
-    fullDescription: "The official website for Lagrange Engineering, my freelance web development company. Features a modern design showcasing services, portfolio, and contact information for potential clients.",
-    technologies: ["Next.js", "React", "TailwindCSS"],
-    status: "finished",
-    live: "https://www.lagrangeengineering.ro/ro",
-  },
-  {
-    id: 5,
     image: "/novaworks.png",
     title: "NovaWorks Ecommerce",
     description: "Ecommerce platform for a 3D printing business with custom quotation for user-uploaded 3D parts.",
     fullDescription: "Ecommerce platform for a 3D printing business. Developed entirely by myself. Features include a full ecommerce website with custom quotation for user-uploaded 3D parts, admin dashboard for products, categories, analytics, and order status, and Romanian/English localization.",
     technologies: ["Java", "Spring Boot", "PostgreSQL", "Next.js", "TailwindCSS", "TanStack Query", "shadcn"],
     status: "in-dev",
+    techBadges: ["Java", "Spring Boot", "Next.js"],
     live: "https://novaworks.ro/",
+  },
+  {
+    id: 5,
+    image: "/lagrange.png",
+    title: "Lagrange Engineering",
+    description: "Corporate website for my freelance web development company.",
+    fullDescription: "The official website for Lagrange Engineering, my freelance web development company. Features a modern design showcasing services, portfolio, and contact information for potential clients.",
+    technologies: ["Next.js", "React", "TailwindCSS"],
+    status: "finished",
+    techBadges: ["Next.js", "React"],
+    live: "https://www.lagrangeengineering.ro/ro",
   },
   {
     id: 6,
@@ -92,6 +98,7 @@ const mockProjects: Project[] = [
     fullDescription: "Complete corporate website for Corox Engineering, a company specializing in industrial automation, Machine Safety, risk assessments, and integrated technical systems. Features responsive design, contact forms, service showcase, and professional branding. The website serves clients across Romania with European-quality professional services.",
     technologies: ["Next.js", "React", "TailwindCSS", "SSG"],
     status: "finished",
+    techBadges: ["Next.js", "React"],
     live: "https://coroxengineering.ro",
   },
   {
@@ -102,6 +109,7 @@ const mockProjects: Project[] = [
     fullDescription: "Elegant showcase website for D-KAT Tour, a company organizing exclusive automotive experiences with supercars and exotic vehicles. The platform showcases the available vehicle fleet, including Porsche 911 Turbo S, Lamborghini Huracán, Ferrari SF90, and Rolls-Royce Dawn. Features include photo gallery, partnership system, registration page, and contact section. The design reflects the brand's premium positioning, targeting automotive enthusiasts and clients interested in luxury experiences.",
     technologies: ["Next.js", "TypeScript", "TailwindCSS", "React"],
     status: "finished",
+    techBadges: ["Next.js", "TypeScript"],
     live: "http://d-kat.com/",
   },
   {
@@ -112,6 +120,7 @@ const mockProjects: Project[] = [
     fullDescription: "Professional website for Hazzard Studio, a modern barbershop in Timișoara. The platform includes service presentation for haircuts, beard and mustache grooming, photo gallery of completed work, barber profiles, operating hours, and mobile app integration for bookings. The modern and clean design reflects the brand identity, with a focus on user experience and new client conversion.",
     technologies: ["Next.js", "TypeScript", "TailwindCSS", "React"],
     status: "finished",
+    techBadges: ["Next.js", "TypeScript"],
     live: "http://hazzardstudio.ro/",
   },
   {
@@ -122,6 +131,7 @@ const mockProjects: Project[] = [
     fullDescription: "Professional website for Liliana Enculescu, a relational counselor and accredited trainer in the ESPERE Method, with over 20 years of experience and 13,000+ clients. The platform presents counseling services for couple relationships, parent-child dynamics, workplace relationships, educator-student relations, healthcare professional-patient communication, and self-relationship. Includes sections for testimonials, FAQ, consultation booking, and detailed presentation of the ESPERE methodology.",
     technologies: ["Next.js", "TypeScript", "TailwindCSS", "React", "SEO"],
     status: "finished",
+    techBadges: ["Next.js", "TypeScript"],
     live: "http://cumcomunic.ro/",
   },
   {
@@ -132,6 +142,7 @@ const mockProjects: Project[] = [
     fullDescription: "Complete website for Cliniva, a modern medical recovery and wellness center in Timișoara, with a tradition dating back to 1993. The platform showcases the full range of medical services: orthopedics, physical therapy (TECAR therapy, laser, ultrasound, magnetotherapy), kinesiotherapy, chiropractic, therapeutic massage, internal medicine, and psychology. Includes medical team profiles, patient testimonials, online booking system, and CNAS insurance coverage information.",
     technologies: ["Next.js", "TypeScript", "TailwindCSS", "React", "SEO"],
     status: "finished",
+    techBadges: ["Next.js", "TypeScript"],
     live: "http://cliniva.ro/",
   },
   {
@@ -142,6 +153,7 @@ const mockProjects: Project[] = [
     fullDescription: "Modern and engaging website for Mechafusion, the official robotics club of Universitatea Politehnica Timișoara. Features include project showcases, member profiles, event announcements, competition results, and recruitment information. Built with a focus on showcasing innovative robotics projects and fostering community engagement among engineering students.",
     technologies: ["HTML", "JavaScript", "TailwindCSS", "AWS S3", "Cloudflare"],
     status: "finished",
+    techBadges: ["HTML", "JavaScript", "AWS"],
     live: "https://www.clubrobotica.upt.ro/",
   },
 ];
@@ -184,6 +196,7 @@ const ProjectsSection = () => {
                     description={project.description}
                     status={project.status}
                     tags={project.tags}
+                    techBadges={project.techBadges}
                   />
                 </div>
               </CarouselItem>
